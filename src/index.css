@@ -2,96 +2,226 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Zenith Airways Design System - Swiss Design Principles with Aviation Aesthetics */
 
 @layer base {
   :root {
+    /* Core Aviation Theme */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
+    --foreground: 215 25% 15%;
+    
+    /* Control Tower Colors */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
+    --card-foreground: 215 25% 15%;
+    
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 215 25% 15%;
+    
+    /* Aviation Primary (Deep Sky Blue) */
+    --primary: 214 88% 55%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 214 88% 65%;
+    
+    /* Operational Secondary */
+    --secondary: 215 20% 96%;
+    --secondary-foreground: 215 25% 25%;
+    
+    /* Radar Muted */
+    --muted: 215 15% 95%;
+    --muted-foreground: 215 15% 45%;
+    
+    /* Control Panel Accent */
+    --accent: 215 20% 94%;
+    --accent-foreground: 215 25% 20%;
+    
+    /* Critical Alert */
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Warning Alert */
+    --warning: 35 85% 60%;
+    --warning-foreground: 0 0% 100%;
+    
+    /* Success Operations */
+    --success: 142 70% 45%;
+    --success-foreground: 0 0% 100%;
+    
+    /* Interface Elements */
+    --border: 215 20% 90%;
+    --input: 215 20% 96%;
+    --ring: 214 88% 55%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Aviation Gradients */
+    --gradient-radar: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-control: linear-gradient(180deg, hsl(var(--background)), hsl(var(--secondary)));
+    --gradient-alert: linear-gradient(135deg, hsl(var(--warning)), hsl(var(--destructive)));
+    
+    /* Shadows & Effects */
+    --shadow-radar: 0 0 30px hsl(var(--primary) / 0.2);
+    --shadow-alert: 0 0 20px hsl(var(--destructive) / 0.3);
+    --shadow-elevated: 0 10px 40px -10px hsl(215 25% 15% / 0.15);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --radius: 0.75rem;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Mission Control Sidebar */
+    --sidebar-background: 0 0% 99%;
+    --sidebar-foreground: 215 25% 25%;
+    --sidebar-primary: 214 88% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 15% 95%;
+    --sidebar-accent-foreground: 215 25% 20%;
+    --sidebar-border: 215 20% 92%;
+    --sidebar-ring: 214 88% 55%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Mission Control Dark Mode */
+    --background: 215 25% 8%;
+    --foreground: 0 0% 95%;
+    
+    --card: 215 25% 10%;
+    --card-foreground: 0 0% 95%;
+    
+    --popover: 215 25% 10%;
+    --popover-foreground: 0 0% 95%;
+    
+    /* Aviation Primary Glow */
+    --primary: 214 88% 65%;
+    --primary-foreground: 215 25% 8%;
+    --primary-glow: 214 88% 75%;
+    
+    /* Control Panel Dark */
+    --secondary: 215 20% 15%;
+    --secondary-foreground: 0 0% 90%;
+    
+    --muted: 215 15% 12%;
+    --muted-foreground: 215 10% 65%;
+    
+    --accent: 215 20% 14%;
+    --accent-foreground: 0 0% 90%;
+    
+    /* Enhanced Alerts for Dark Mode */
+    --destructive: 0 85% 65%;
+    --destructive-foreground: 0 0% 100%;
+    --warning: 35 85% 65%;
+    --success: 142 70% 50%;
+    
+    --border: 215 15% 18%;
+    --input: 215 15% 16%;
+    --ring: 214 88% 65%;
+    
+    /* Enhanced Shadows for Dark Mode */
+    --shadow-radar: 0 0 40px hsl(var(--primary) / 0.4);
+    --shadow-alert: 0 0 25px hsl(var(--destructive) / 0.4);
+    --shadow-elevated: 0 20px 60px -10px hsl(0 0% 0% / 0.4);
+    
+    /* Dark Sidebar */
+    --sidebar-background: 215 25% 6%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 214 88% 65%;
+    --sidebar-primary-foreground: 215 25% 8%;
+    --sidebar-accent: 215 15% 12%;
+    --sidebar-accent-foreground: 0 0% 85%;
+    --sidebar-border: 215 15% 15%;
+    --sidebar-ring: 214 88% 65%;
   }
+}
+
+/* Aviation Animation System */
+@layer utilities {
+  .radar-sweep {
+    animation: radar-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .aircraft-hover {
+    transition: var(--transition-smooth);
+  }
+  
+  .aircraft-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-elevated);
+  }
+  
+  .alert-pulse {
+    animation: alert-glow 1.5s ease-in-out infinite alternate;
+  }
+  
+  .status-indicator {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .status-indicator::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: rotate(45deg);
+    animation: shine 2s infinite;
+  }
+}
+
+@layer components {
+  .mission-control-card {
+    @apply rounded-xl border bg-card text-card-foreground shadow-sm;
+    transition: var(--transition-smooth);
+  }
+  
+  .mission-control-card:hover {
+    box-shadow: var(--shadow-elevated);
+    transform: translateY(-1px);
+  }
+  
+  .alert-critical {
+    @apply border-destructive/20 bg-destructive/5 text-destructive;
+  }
+  
+  .alert-warning {
+    @apply border-orange-400/20 bg-orange-50 text-orange-800;
+  }
+  
+  .alert-success {
+    @apply border-green-400/20 bg-green-50 text-green-800;
+  }
+  
+  .radar-grid {
+    background-image: 
+      linear-gradient(hsl(var(--border)) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
+
+@keyframes radar-pulse {
+  0%, 100% { 
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes alert-glow {
+  0% { 
+    box-shadow: 0 0 5px hsl(var(--destructive) / 0.5);
+  }
+  100% { 
+    box-shadow: 0 0 20px hsl(var(--destructive) / 0.8);
+  }
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
 }
 
 @layer base {
