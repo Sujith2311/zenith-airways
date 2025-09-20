@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   BarChart3, 
   TrendingUp, 
@@ -16,6 +17,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const AnalyticsHub = () => {
+  const navigate = useNavigate();
   const kpiMetrics = [
     { 
       label: 'On-Time Performance', 
@@ -110,7 +112,15 @@ const AnalyticsHub = () => {
       {/* KPI Dashboard */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {kpiMetrics.map((metric) => (
-          <Card key={metric.label} className="mission-control-card">
+          <Card 
+            key={metric.label} 
+            className="mission-control-card cursor-pointer hover:bg-muted/50 transition-colors"
+            onClick={() => {
+              if (metric.label.includes('Performance')) navigate('/delay-analysis');
+              else if (metric.label.includes('Crew')) navigate('/crew');
+              else navigate('/analytics');
+            }}
+          >
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-2">
                 <metric.icon className="h-5 w-5 text-muted-foreground" />
@@ -177,7 +187,16 @@ const AnalyticsHub = () => {
         <TabsContent value="performance" className="space-y-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             {performanceWidgets.map((widget, index) => (
-              <Card key={index} className="mission-control-card">
+              <Card 
+                key={index} 
+                className="mission-control-card cursor-pointer hover:bg-muted/50 transition-colors"
+                onClick={() => {
+                  if (widget.title.includes('Delay')) navigate('/delay-analysis');
+                  else if (widget.title.includes('Gate')) navigate('/gate-utilization');
+                  else if (widget.title.includes('Crew')) navigate('/crew');
+                  else navigate('/analytics');
+                }}
+              >
                 <CardHeader className="pb-3">
                   <div className="flex items-center justify-between">
                     <CardTitle className="text-sm font-medium">{widget.title}</CardTitle>
@@ -216,7 +235,10 @@ const AnalyticsHub = () => {
               </CardContent>
             </Card>
 
-            <Card className="mission-control-card">
+            <Card 
+              className="mission-control-card cursor-pointer hover:bg-muted/50 transition-colors"
+              onClick={() => navigate('/delay-analysis')}
+            >
               <CardHeader>
                 <CardTitle>Weather Impact Analysis</CardTitle>
                 <CardDescription>Weather patterns vs operational disruptions</CardDescription>

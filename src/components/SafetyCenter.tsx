@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   Shield, 
   Fuel, 
@@ -17,6 +18,7 @@ import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 
 const SafetyCenter = () => {
+  const navigate = useNavigate();
   const safetyMetrics = [
     { 
       label: 'Fuel Health Index', 
@@ -111,7 +113,11 @@ const SafetyCenter = () => {
       {/* Safety Metrics Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {safetyMetrics.map((metric) => (
-          <Card key={metric.label} className="mission-control-card">
+          <Card 
+            key={metric.label} 
+            className="mission-control-card cursor-pointer hover:bg-muted/50 transition-colors"
+            onClick={() => navigate('/safety-analytics')}
+          >
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <metric.icon className={`h-8 w-8 ${metric.color}`} />

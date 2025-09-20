@@ -23,6 +23,9 @@ import CrewProfileDetail from "@/components/CrewProfileDetail";
 import AircraftDetail from "@/components/AircraftDetail";
 import FuelConsumptionHistory from "@/components/FuelConsumptionHistory";
 import InteractiveWeatherRadarFull from "@/components/InteractiveWeatherRadarFull";
+import SafetyAnalyticsDashboard from "@/components/SafetyAnalyticsDashboard";
+import DelayAnalysisDashboard from "@/components/DelayAnalysisDashboard";
+import GateUtilizationDetail from "@/components/GateUtilizationDetail";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
@@ -50,6 +53,13 @@ const App = () => (
           <Route path="/response-performance" element={<AirlineLayout><ResponsePerformance /></AirlineLayout>} />
           <Route path="/weather-radar" element={<AirlineLayout><InteractiveWeatherRadar /></AirlineLayout>} />
           <Route path="/route-optimization" element={<AirlineLayout><RouteOptimization /></AirlineLayout>} />
+          <Route path="/crew/:id" element={<AirlineLayout><CrewProfileDetail /></AirlineLayout>} />
+          <Route path="/aircraft/:id" element={<AirlineLayout><AircraftDetail /></AirlineLayout>} />
+          <Route path="/fuel-history/:id" element={<AirlineLayout><FuelConsumptionHistory /></AirlineLayout>} />
+          <Route path="/weather-radar-full" element={<AirlineLayout><InteractiveWeatherRadarFull /></AirlineLayout>} />
+          <Route path="/safety-analytics" element={<AirlineLayout><SafetyAnalyticsDashboard /></AirlineLayout>} />
+          <Route path="/delay-analysis" element={<AirlineLayout><DelayAnalysisDashboard /></AirlineLayout>} />
+          <Route path="/gate-utilization" element={<AirlineLayout><GateUtilizationDetail /></AirlineLayout>} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   MapPin, 
   Clock, 
@@ -14,6 +15,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const GateOperations = () => {
+  const navigate = useNavigate();
   const gateUtilization = [
     { gate: 'A1', flight: 'ZA101', status: 'occupied', turnaround: '25min', next: 'ZA205' },
     { gate: 'A2', flight: null, status: 'available', turnaround: null, next: 'ZA310' },  
@@ -68,7 +70,10 @@ const GateOperations = () => {
 
       {/* Quick Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <Card className="mission-control-card">
+        <Card 
+          className="mission-control-card cursor-pointer hover:bg-muted/50 transition-colors"
+          onClick={() => navigate('/gate-utilization')}
+        >
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
@@ -80,7 +85,10 @@ const GateOperations = () => {
           </CardContent>
         </Card>
 
-        <Card className="mission-control-card">
+        <Card 
+          className="mission-control-card cursor-pointer hover:bg-muted/50 transition-colors"
+          onClick={() => navigate('/delay-analysis')}
+        >
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
@@ -92,7 +100,10 @@ const GateOperations = () => {
           </CardContent>
         </Card>
 
-        <Card className="mission-control-card">
+        <Card 
+          className="mission-control-card cursor-pointer hover:bg-muted/50 transition-colors"
+          onClick={() => navigate('/delay-analysis')}
+        >
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
@@ -104,7 +115,10 @@ const GateOperations = () => {
           </CardContent>
         </Card>
 
-        <Card className="mission-control-card">
+        <Card 
+          className="mission-control-card cursor-pointer hover:bg-muted/50 transition-colors"
+          onClick={() => navigate('/gate-utilization')}
+        >
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
@@ -135,7 +149,11 @@ const GateOperations = () => {
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {gateUtilization.map((gate) => (
-                  <div key={gate.gate} className="p-4 rounded-lg border bg-card/50 space-y-3">
+                  <div 
+                    key={gate.gate} 
+                    className="p-4 rounded-lg border bg-card/50 space-y-3 cursor-pointer hover:bg-muted/50 transition-colors"
+                    onClick={() => navigate('/gate-utilization')}
+                  >
                     <div className="flex items-center justify-between">
                       <span className="font-semibold text-lg">Gate {gate.gate}</span>
                       <Badge variant={getStatusColor(gate.status)}>
@@ -175,7 +193,10 @@ const GateOperations = () => {
         </TabsContent>
 
         <TabsContent value="heatmap" className="space-y-6">
-          <Card className="mission-control-card">
+          <Card 
+            className="mission-control-card cursor-pointer hover:bg-muted/50 transition-colors"
+            onClick={() => navigate('/gate-utilization')}
+          >
             <CardHeader>
               <CardTitle>Terminal Congestion Heatmap</CardTitle>
               <CardDescription>Visual representation of gate utilization and traffic patterns</CardDescription>
