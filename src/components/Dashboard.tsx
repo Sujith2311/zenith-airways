@@ -89,7 +89,7 @@ const Dashboard = () => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {quickStats.map((stat) => (
-              <Card key={stat.label} className="mission-control-card">
+              <Card key={stat.label} className="mission-control-card cursor-pointer hover:border-primary/50 transition-all duration-200 hover:scale-105">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
@@ -114,7 +114,7 @@ const Dashboard = () => {
           <h2 className="text-2xl font-bold text-foreground mb-6">Dashboard Subsections</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {/* Safety Center */}
-            <Card className="mission-control-card cursor-pointer hover:border-primary/50 transition-colors" onClick={() => navigate('/safety-center')}>
+            <Card className="mission-control-card cursor-pointer hover:border-primary/50 transition-all duration-200 hover:scale-105 hover:shadow-lg" onClick={() => navigate('/safety-center')}>
               <CardHeader className="pb-3">
                 <CardTitle className="flex items-center gap-2 text-lg">
                   <Shield className="h-5 w-5 text-primary" />

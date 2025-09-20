@@ -19,6 +19,10 @@ import SecurityIncidentTrends from "@/components/SecurityIncidentTrends";
 import ResponsePerformance from "@/components/ResponsePerformance";
 import InteractiveWeatherRadar from "@/components/InteractiveWeatherRadar";
 import RouteOptimization from "@/components/RouteOptimization";
+import CrewProfileDetail from "@/components/CrewProfileDetail";
+import AircraftDetail from "@/components/AircraftDetail";
+import FuelConsumptionHistory from "@/components/FuelConsumptionHistory";
+import InteractiveWeatherRadarFull from "@/components/InteractiveWeatherRadarFull";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   Plane, 
   Fuel, 
@@ -20,6 +21,7 @@ import { Progress } from '@/components/ui/progress';
 import { Separator } from '@/components/ui/separator';
 
 const AircraftOperations = () => {
+  const navigate = useNavigate();
   const aircraftFleet = [
     {
       id: 'N747ZA',
@@ -191,14 +193,14 @@ const AircraftOperations = () => {
             </CardHeader>
             <CardContent className="space-y-6">
               {aircraftFleet.map((aircraft) => (
-                <div key={aircraft.id} className="p-4 rounded-lg border bg-card/50 space-y-4">
+                <div key={aircraft.id} className="p-4 rounded-lg border bg-card/50 space-y-4 hover:border-primary/50 transition-all duration-200 hover:shadow-md">
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
+                    <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigate(`/aircraft/${aircraft.id}`)}>
+                      <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors">
                         <Plane className="h-6 w-6 text-primary" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-foreground">{aircraft.id}</h3>
+                        <h3 className="font-bold text-foreground hover:text-primary transition-colors">{aircraft.id}</h3>
                         <p className="text-sm text-muted-foreground">{aircraft.model}</p>
                       </div>
                     </div>
@@ -231,7 +233,7 @@ const AircraftOperations = () => {
                     <div className="space-y-3">
                       <div className="space-y-1">
                         <div className="flex justify-between items-center text-sm">
-                          <div className="flex items-center gap-1">
+                          <div className="flex items-center gap-1 cursor-pointer hover:text-primary transition-colors" onClick={() => navigate(`/aircraft/${aircraft.id}/fuel-history`)}>
                             <Fuel className="h-3 w-3 text-primary" />
                             <span>Fuel Level:</span>
                           </div>
@@ -242,7 +244,7 @@ const AircraftOperations = () => {
                       
                       <div className="space-y-1">
                         <div className="flex justify-between items-center text-sm">
-                          <div className="flex items-center gap-1">
+                          <div className="flex items-center gap-1 cursor-pointer hover:text-primary transition-colors" onClick={() => navigate(`/aircraft/${aircraft.id}/maintenance-log`)}>
                             <Gauge className="h-3 w-3 text-primary" />
                             <span>Engine:</span>
                           </div>
@@ -284,15 +286,15 @@ const AircraftOperations = () => {
                     </div>
                   )}
 
-                  <div className="flex items-center justify-between pt-2 border-t">
-                    <p className="text-sm text-muted-foreground">
-                      Next Flight: <span className="font-medium text-foreground">{aircraft.nextFlight}</span>
-                    </p>
-                    <div className="flex gap-2">
-                      <Button variant="outline" size="sm">View Details</Button>
-                      <Button size="sm">Maintenance Log</Button>
+                    <div className="flex items-center justify-between pt-2 border-t">
+                      <p className="text-sm text-muted-foreground">
+                        Next Flight: <span className="font-medium text-foreground">{aircraft.nextFlight}</span>
+                      </p>
+                      <div className="flex gap-2">
+                        <Button variant="outline" size="sm" onClick={() => navigate(`/aircraft/${aircraft.id}`)}>View Details</Button>
+                        <Button size="sm" onClick={() => navigate(`/aircraft/${aircraft.id}/maintenance-log`)}>Maintenance Log</Button>
+                      </div>
                     </div>
-                  </div>
                 </div>
               ))}
             </CardContent>

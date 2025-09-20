@@ -20,6 +20,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Switch } from '@/components/ui/switch';
 
 const InteractiveWeatherRadar = () => {
+  const navigate = useNavigate();
   const [activeLayer, setActiveLayer] = useState('precipitation');
   const [showTurbulence, setShowTurbulence] = useState(true);
   const [showStorms, setShowStorms] = useState(true);

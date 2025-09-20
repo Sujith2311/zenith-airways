@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   Users, 
   Clock, 
@@ -19,6 +20,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
 
 const CrewHub = () => {
+  const navigate = useNavigate();
   const [selectedFilter, setSelectedFilter] = useState('all');
 
   const crewMembers = [
@@ -238,14 +240,14 @@ const CrewHub = () => {
                 const dutyProgress = (member.weeklyHours / member.maxHours) * 100;
                 
                 return (
-                  <div key={member.id} className="p-4 rounded-lg border bg-card/50 space-y-4">
+                  <div key={member.id} className="p-4 rounded-lg border bg-card/50 space-y-4 hover:border-primary/50 transition-all duration-200 hover:shadow-md">
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
+                      <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigate(`/crew/${member.id}`)}>
+                        <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors">
                           <Users className="h-6 w-6 text-primary" />
                         </div>
                         <div>
-                          <h3 className="font-medium text-foreground">{member.name}</h3>
+                          <h3 className="font-medium text-foreground hover:text-primary transition-colors">{member.name}</h3>
                           <p className="text-sm text-muted-foreground">{member.role}</p>
                         </div>
                       </div>
@@ -311,7 +313,7 @@ const CrewHub = () => {
         <div className="space-y-6">
           <Card className="mission-control-card">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+              <CardTitle className="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors" onClick={() => navigate('/crew/fatigue-trends')}>
                 <BarChart3 className="h-5 w-5 text-primary" />
                 Fatigue Analysis
               </CardTitle>
@@ -364,7 +366,7 @@ const CrewHub = () => {
 
           <Card className="mission-control-card">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+              <CardTitle className="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors" onClick={() => navigate('/crew/duty-hours')}>
                 <Clock className="h-5 w-5 text-primary" />
                 Duty Hours Overview
               </CardTitle>
