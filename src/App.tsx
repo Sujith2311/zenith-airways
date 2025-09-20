@@ -14,6 +14,11 @@ import AlertCenter from "@/components/AlertCenter";
 import SecurityCenter from "@/components/SecurityCenter";
 import AnalyticsHub from "@/components/AnalyticsHub";
 import SystemSettings from "@/components/SystemSettings";
+import SafetyCenter from "@/components/SafetyCenter";
+import SecurityIncidentTrends from "@/components/SecurityIncidentTrends";
+import ResponsePerformance from "@/components/ResponsePerformance";
+import InteractiveWeatherRadar from "@/components/InteractiveWeatherRadar";
+import RouteOptimization from "@/components/RouteOptimization";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
@@ -36,6 +41,11 @@ const App = () => (
           <Route path="/security" element={<AirlineLayout><SecurityCenter /></AirlineLayout>} />
           <Route path="/analytics" element={<AirlineLayout><AnalyticsHub /></AirlineLayout>} />
           <Route path="/settings" element={<AirlineLayout><SystemSettings /></AirlineLayout>} />
+          <Route path="/safety-center" element={<AirlineLayout><SafetyCenter /></AirlineLayout>} />
+          <Route path="/security-incidents" element={<AirlineLayout><SecurityIncidentTrends /></AirlineLayout>} />
+          <Route path="/response-performance" element={<AirlineLayout><ResponsePerformance /></AirlineLayout>} />
+          <Route path="/weather-radar" element={<AirlineLayout><InteractiveWeatherRadar /></AirlineLayout>} />
+          <Route path="/route-optimization" element={<AirlineLayout><RouteOptimization /></AirlineLayout>} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

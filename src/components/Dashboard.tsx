@@ -9,15 +9,24 @@ import {
   Settings,
   BarChart3,
   Radio,
-  Gauge
+  Gauge,
+  Eye,
+  Timer,
+  Navigation,
+  Route,
+  Lock,
+  TrendingUp
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
+import { useNavigate } from 'react-router-dom';
 import heroImage from '@/assets/zenith-hero.jpg';
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
   const criticalAlerts = [
     { id: 1, type: 'crew', message: 'Crew fatigue violation - Flight ZA451', severity: 'high' },
     { id: 2, type: 'weather', message: 'Severe turbulence reported - Route SFO-LAX', severity: 'medium' },
@@ -57,15 +66,15 @@ const Dashboard = () => {
               </p>
               
               <div className="flex gap-4">
-                <Button size="lg" className="bg-gradient-radar text-primary-foreground hover:opacity-90">
+                <Button size="lg" className="bg-gradient-radar text-primary-foreground hover:opacity-90" onClick={() => navigate('/operations')}>
                   <Radio className="mr-2 h-5 w-5" />
                   Station Operations
                 </Button>
-                <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary/10">
+                <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary/10" onClick={() => navigate('/safety-center')}>
                   <Shield className="mr-2 h-5 w-5" />
                   Safety Center
                 </Button>
-                <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary/10">
+                <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary/10" onClick={() => navigate('/analytics')}>
                   <BarChart3 className="mr-2 h-5 w-5" />
                   Analytics Hub
                 </Button>
@@ -95,6 +104,176 @@ const Dashboard = () => {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Dashboard Subsections */}
+      <section className="py-8">
+        <div className="container mx-auto px-6">
+          <h2 className="text-2xl font-bold text-foreground mb-6">Dashboard Subsections</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {/* Safety Center */}
+            <Card className="mission-control-card cursor-pointer hover:border-primary/50 transition-colors" onClick={() => navigate('/safety-center')}>
+              <CardHeader className="pb-3">
+                <CardTitle className="flex items-center gap-2 text-lg">
+                  <Shield className="h-5 w-5 text-primary" />
+                  Safety Center
+                </CardTitle>
+                <CardDescription>Graph-driven safety analytics and risk management</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm text-muted-foreground">Safety Score</span>
+                  <Badge variant="default">94.2%</Badge>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex justify-between text-xs">
+                    <span>Fuel Health</span>
+                    <span className="text-success">92%</span>
+                  </div>
+                  <div className="flex justify-between text-xs">
+                    <span>Crew Fatigue</span>
+                    <span className="text-warning">68%</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Security Incident Trends */}
+            <Card className="mission-control-card cursor-pointer hover:border-primary/50 transition-colors" onClick={() => navigate('/security-incidents')}>
+              <CardHeader className="pb-3">
+                <CardTitle className="flex items-center gap-2 text-lg">
+                  <Lock className="h-5 w-5 text-primary" />
+                  Security Incident Trends
+                </CardTitle>
+                <CardDescription>Security incident analysis and trend monitoring</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm text-muted-foreground">Security Level</span>
+                  <Badge variant="default">Secure</Badge>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex justify-between text-xs">
+                    <span>Incidents (30d)</span>
+                    <span className="text-success">-40%</span>
+                  </div>
+                  <div className="flex justify-between text-xs">
+                    <span>Response Time</span>
+                    <span className="text-success">2:15 avg</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Response Performance */}
+            <Card className="mission-control-card cursor-pointer hover:border-primary/50 transition-colors" onClick={() => navigate('/response-performance')}>
+              <CardHeader className="pb-3">
+                <CardTitle className="flex items-center gap-2 text-lg">
+                  <Timer className="h-5 w-5 text-primary" />
+                  Response Performance
+                </CardTitle>
+                <CardDescription>Incident response analytics and team metrics</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm text-muted-foreground">Avg Response</span>
+                  <Badge variant="default">2:34</Badge>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex justify-between text-xs">
+                    <span>Resolution Rate</span>
+                    <span className="text-success">94.2%</span>
+                  </div>
+                  <div className="flex justify-between text-xs">
+                    <span>SLA Compliance</span>
+                    <span className="text-warning">91.7%</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Interactive Weather Radar */}
+            <Card className="mission-control-card cursor-pointer hover:border-primary/50 transition-colors" onClick={() => navigate('/weather-radar')}>
+              <CardHeader className="pb-3">
+                <CardTitle className="flex items-center gap-2 text-lg">
+                  <Eye className="h-5 w-5 text-primary" />
+                  Interactive Weather Radar
+                </CardTitle>
+                <CardDescription>Live weather radar with interactive layers</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm text-muted-foreground">Weather Status</span>
+                  <Badge variant="secondary">Moderate</Badge>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex justify-between text-xs">
+                    <span>Active Storms</span>
+                    <span className="text-warning">2 systems</span>
+                  </div>
+                  <div className="flex justify-between text-xs">
+                    <span>Flight Delays</span>
+                    <span className="text-warning">8 affected</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Route Optimization */}
+            <Card className="mission-control-card cursor-pointer hover:border-primary/50 transition-colors" onClick={() => navigate('/route-optimization')}>
+              <CardHeader className="pb-3">
+                <CardTitle className="flex items-center gap-2 text-lg">
+                  <Route className="h-5 w-5 text-primary" />
+                  Route Optimization
+                </CardTitle>
+                <CardDescription>AI-powered route planning and optimization</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm text-muted-foreground">Fuel Savings</span>
+                  <Badge variant="default">12.3%</Badge>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex justify-between text-xs">
+                    <span>Time Saved</span>
+                    <span className="text-success">8.7%</span>
+                  </div>
+                  <div className="flex justify-between text-xs">
+                    <span>Cost Reduction</span>
+                    <span className="text-success">15.6%</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Analytics Hub Link */}
+            <Card className="mission-control-card cursor-pointer hover:border-primary/50 transition-colors" onClick={() => navigate('/analytics')}>
+              <CardHeader className="pb-3">
+                <CardTitle className="flex items-center gap-2 text-lg">
+                  <TrendingUp className="h-5 w-5 text-primary" />
+                  Analytics Hub
+                </CardTitle>
+                <CardDescription>Comprehensive performance analytics and insights</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm text-muted-foreground">Performance</span>
+                  <Badge variant="default">87.3%</Badge>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex justify-between text-xs">
+                    <span>Efficiency</span>
+                    <span className="text-success">+2.1%</span>
+                  </div>
+                  <div className="flex justify-between text-xs">
+                    <span>Predictions</span>
+                    <span className="text-success">94% accurate</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
