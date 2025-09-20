@@ -1,4 +1,4 @@
-import React from 'react';
+oimport React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
   Clock, 
@@ -15,7 +15,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
-const DelayAnalysisDashboard = () => {
+const DelayAnalysisDashbard = () => {
   const navigate = useNavigate();
 
   const delayCategories = [
